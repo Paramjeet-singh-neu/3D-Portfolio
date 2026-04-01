@@ -27,37 +27,37 @@ const Career = () => {
           <div className="career-info-box">
             <div className="career-info-in">
               <div className="career-role">
+                <h4>AI Engineer</h4>
+                <h5>Acuvate Software</h5>
+              </div>
+              <h3>Mar 2023 – Aug 2024</h3>
+            </div>
+            <p>
+              Designed and deployed LLM-powered conversational systems using Python, Azure OpenAI, and Azure AI services. Built production AI system integrating Azure OpenAI, OCR, and Azure Functions to automate complaint classification for NYC Police, reducing manual processing by 60%. Developed GPT-4 prompt engineering pipelines and evaluation loops, improving model reliability and reducing misclassification rates by 60%. Built RAG conversational agent using GPT-4, Azure AI Search, vector embeddings for multilingual document search.
+            </p>
+          </div>
+          <div className="career-info-box">
+            <div className="career-info-in">
+              <div className="career-role">
                 <h4>Software Engineer</h4>
-                <h5>Acuvate</h5>
+                <h5>Acuvate Software</h5>
               </div>
-              <h3>Jul 2021 - Aug 2024</h3>
+              <h3>Jun 2021 – Mar 2023</h3>
             </div>
             <p>
-              AI & NLP Solutions: Designed and deployed AI-powered chatbots (Azure OpenAI, Microsoft Copilot Studio, Power Virtual Agents), cutting customer complaints by 30% and boosting engagement. Data Automation & Search: Engineered web scraping pipeline in Python, improving chatbot response accuracy by 40%. Developed AI-driven complaint registration system for NYC Police with Azure Cognitive Services. Optimized SQL queries reducing execution time by 60%.
+              Built scalable Python-based data ingestion pipelines using Scrapy and BeautifulSoup across 100+ external sources for NLP models. Engineered AI-powered semantic search platform using embeddings within Salesforce, reducing information retrieval time by 35%. Designed and optimized SQL Server ETL pipelines with indexing strategies and query tuning, improving processing speed by 50%. Automated reporting workflows integrating REST APIs with Power BI dashboards, reducing manual reporting effort by 70%.
             </p>
           </div>
           <div className="career-info-box">
             <div className="career-info-in">
               <div className="career-role">
-                <h4>Operations Manager</h4>
-                <h5>Beatit Entertainment</h5>
+                <h4>Instructional Assistant</h4>
+                <h5>Northeastern University</h5>
               </div>
-              <h3>Mar 2024 - May 2024</h3>
+              <h3>Aug 2025 – Feb 2026</h3>
             </div>
             <p>
-              Oversaw day-to-day operations and implemented strategies to enhance workflow efficiency. Managed team of 10, coordinating logistics and budget management for multiple events. Introduced process improvements that reduced turnaround times by 15%.
-            </p>
-          </div>
-          <div className="career-info-box">
-            <div className="career-info-in">
-              <div className="career-role">
-                <h4>Intern</h4>
-                <h5>AIRobotica Services Pvt. Ltd.</h5>
-              </div>
-              <h3>Jul 2020 - Aug 2020</h3>
-            </div>
-            <p>
-              Gained hands-on experience in electronics and automation. Designed and tested printed circuit boards (PCBs) for various automation solutions, collaborating with senior engineers to refine specifications and ensure functionality.
+              Supported instruction for database design and SQL systems, guiding students through data modeling, normalization, and query optimization. Reviewed and debugged SQL assignments and data workflows, reinforcing best practices in data validation, schema design, and query performance optimization.
             </p>
           </div>
         </div>

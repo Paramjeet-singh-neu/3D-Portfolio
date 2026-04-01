@@ -39,13 +39,13 @@ const Contact = () => {
               LinkedIn <MdArrowOutward />
             </a>
             <a
-              href="https://www.paramjeetsingh.me/"
+              href="/Paramjeet_Singh_Resume.pdf"
               target="_blank"
               rel="noreferrer"
               data-cursor="disable"
               className="contact-social"
             >
-              Portfolio <MdArrowOutward />
+              Resume <MdArrowOutward />
             </a>
             <a
               href="mailto:paramjeetsingh070@gmail.com"
