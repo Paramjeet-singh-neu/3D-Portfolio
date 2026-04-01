@@ -15,58 +15,49 @@ const Career = () => {
           <div className="career-info-box">
             <div className="career-info-in">
               <div className="career-role">
-                <h4>Co-Founder</h4>
-                <h5>CallHQ.ai</h5>
+                <h4>Instructional Assistant</h4>
+                <h5>Northeastern University</h5>
               </div>
-              <h3>NOW</h3>
+              <h3>Aug 2025 - Feb 2026</h3>
             </div>
             <p>
-              Building CallHQ.ai, a voice AI platform for
-              automating customer calls, support, and conversions.
+              Supporting instruction and academic initiatives at Northeastern University while pursuing Master&apos;s degree in Information Systems.
             </p>
           </div>
           <div className="career-info-box">
             <div className="career-info-in">
               <div className="career-role">
-                <h4>Adobe</h4>
-                <h5>6+ years · Noida</h5>
+                <h4>Software Engineer</h4>
+                <h5>Acuvate</h5>
               </div>
-              <h3>2017–24</h3>
+              <h3>Jul 2021 - Aug 2024</h3>
             </div>
             <p>
-              Senior Lead Software Engineer (Feb 2024 – May 2024). Lead Software
-              Engineer (Feb 2021 – Feb 2024). Software Engineer II (Dec 2017 –
-              Feb 2021): internationalization, globalization, and localization for
-              Adobe Technical Communication Suite; functional and linguistic testing
-              strategy; in-house tooling; collaboration with product and engineering
-              for high-quality localized releases.
+              AI & NLP Solutions: Designed and deployed AI-powered chatbots (Azure OpenAI, Microsoft Copilot Studio, Power Virtual Agents), cutting customer complaints by 30% and boosting engagement. Data Automation & Search: Engineered web scraping pipeline in Python, improving chatbot response accuracy by 40%. Developed AI-driven complaint registration system for NYC Police with Azure Cognitive Services. Optimized SQL queries reducing execution time by 60%.
             </p>
           </div>
           <div className="career-info-box">
             <div className="career-info-in">
               <div className="career-role">
-                <h4>Consultant</h4>
-                <h5>Genpact Headstrong </h5>
+                <h4>Operations Manager</h4>
+                <h5>Beatit Entertainment</h5>
               </div>
-              <h3>2016–17</h3>
+              <h3>Mar 2024 - May 2024</h3>
             </div>
             <p>
-              Sep 2016 – Nov 2017. Developed and maintained WCF services consumed
-              by the UI; deployment support across environments; NUnit tests and
-              coverage; bug fixes from QA and users; database work.
+              Oversaw day-to-day operations and implemented strategies to enhance workflow efficiency. Managed team of 10, coordinating logistics and budget management for multiple events. Introduced process improvements that reduced turnaround times by 15%.
             </p>
           </div>
           <div className="career-info-box">
             <div className="career-info-in">
               <div className="career-role">
-                <h4>Sf Engineer</h4>
-                <h5>Infogain</h5>
+                <h4>Intern</h4>
+                <h5>AIRobotica Services Pvt. Ltd.</h5>
               </div>
-              <h3>2013-16</h3>
+              <h3>Jul 2020 - Aug 2020</h3>
             </div>
             <p>
-              Software engineering across enterprise projects, contributing to
-              design, development, and delivery of business applications.
+              Gained hands-on experience in electronics and automation. Designed and tested printed circuit boards (PCBs) for various automation solutions, collaborating with senior engineers to refine specifications and ensure functionality.
             </p>
           </div>
         </div>
