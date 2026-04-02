@@ -87,20 +87,19 @@ const WhatIDo = () => {
             <div className="what-corner"></div>
 
             <div className="what-content-in">
-              <h3>AI & AUTOMATION</h3>
-              <h4>Workflow Intelligence for Organizations</h4>
+              <h3>AI & NLP SOLUTIONS</h3>
+              <h4>Building Intelligent Systems That Scale</h4>
               <p>
-                AI specialist helping organizations automate workflows—internal ops
-                and customer-facing—so teams ship faster with less manual work.
+                AI/NLP specialist designing and deploying production-ready AI systems—chatbots, copilots, and intelligent search solutions that drive automation and customer engagement at scale.
               </p>
               <h5>Skillset & tools</h5>
               <div className="what-content-flex">
-                <div className="what-tags">LLMs &amp; agents</div>
-                <div className="what-tags">Workflow design</div>
-                <div className="what-tags">RAG &amp; retrieval</div>
-                <div className="what-tags">Evals &amp; guardrails</div>
-                <div className="what-tags">Integrations</div>
-                <div className="what-tags">Product strategy</div>
+                <div className="what-tags">Azure OpenAI</div>
+                <div className="what-tags">LLMs &amp; NLP</div>
+                <div className="what-tags">Chatbots &amp; Copilots</div>
+                <div className="what-tags">RAG Systems</div>
+                <div className="what-tags">Cognitive Services</div>
+                <div className="what-tags">Python</div>
               </div>
               <div className="what-arrow"></div>
             </div>
@@ -124,21 +123,20 @@ const WhatIDo = () => {
             </div>
             <div className="what-corner"></div>
             <div className="what-content-in">
-              <h3>BUILD &amp; SCALE</h3>
-              <h4>Shipping AI in Production</h4>
+              <h3>DATA &amp; CLOUD ENGINEERING</h3>
+              <h4>Building Scalable Data Pipelines &amp; Architectures</h4>
               <p>
-                I build the systems behind it: APIs, data, voice/real-time, and
-                full-stack products—production-ready, not slide decks.
+                Full-stack engineer designing cloud-native data solutions, analytics pipelines, and enterprise applications—from SQL optimization to Power BI dashboards, delivering measurable business outcomes.
               </p>
               <h5>Skillset & tools</h5>
               <div className="what-content-flex">
-                <div className="what-tags">Node.js</div>
-                <div className="what-tags">Python</div>
-                <div className="what-tags">REST &amp; real-time APIs</div>
-                <div className="what-tags">PostgreSQL</div>
-                <div className="what-tags">MongoDB</div>
+                <div className="what-tags">SQL &amp; Python</div>
+                <div className="what-tags">Power BI</div>
+                <div className="what-tags">ASP.NET Core</div>
+                <div className="what-tags">APIs &amp; Integration</div>
+                <div className="what-tags">Azure Cloud</div>
                 <div className="what-tags">React</div>
-                <div className="what-tags">Cloud &amp; infra</div>
+                <div className="what-tags">Data Pipelines</div>
               </div>
               <div className="what-arrow"></div>
             </div>

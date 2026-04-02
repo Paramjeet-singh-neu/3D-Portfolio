@@ -5,32 +5,32 @@ import { MdArrowBack, MdArrowForward } from "react-icons/md";
 
 const projects = [
   {
-    title: "CallHQ",
-    category: "Voice AI Calling Platform",
-    tools: "Voice AI, Calling Automation, CRM Integrations",
-    image: "/images/callhq.png",
-    link: "https://callhq.ai",
+    title: "QuickQuiz",
+    category: "Agentic AI Application",
+    tools: "LLM Agents, LangChain, OpenAI, Python, Tool-Calling Pipelines",
+    image: "/images/quickquiz.png",
+    link: "https://github.com/paramjeet-singh-neu/QuickQuiz",
   },
   {
-    title: "Whatsapp Automation",
-    category: "WABA Application",
-    tools: "WhatsApp Business API, Workflow Automation, Notifications",
-    image: "/images/whatsapp.png",
-    link: "https://whatsapp.callhq.ai",
+    title: "IMDb Analytics & Data Warehouse",
+    category: "End-to-End BI System",
+    tools: "Databricks, Azure Data Factory, Power BI, Tableau, Medallion Architecture",
+    image: "/images/imdb-analytics.png",
+    link: "https://github.com",
   },
   {
-    title: "Broki",
-    category: "Real Estate Platform for FnB Industry",
-    tools: "Property Discovery, Lead Management, Marketplace Workflows",
-    image: "/images/broki.png",
-    link: "https://broki.in",
+    title: "NYC Police Complaint System",
+    category: "AI-Powered Complaint Classification",
+    tools: "Azure OpenAI, OCR, Azure Functions, License Plate Recognition",
+    image: "/images/complaint-system.png",
+    link: "#",
   },
   {
-    title: "Orrdr.com",
-    category: "Ecommerce Platform and Mobile App",
-    tools: "Ecommerce, Mobile Experience, Order Management",
-    image: "/images/orrdr.png",
-    link: "https://orrdr.com",
+    title: "RAG-Powered Enterprise Search",
+    category: "Conversational AI with Semantic Search",
+    tools: "GPT-4, Azure AI Search, Vector Embeddings, Semantic Indexing",
+    image: "/images/rag-search.png",
+    link: "#",
   },
 ];
 
@@ -61,10 +61,10 @@ const Work = () => {
   }, [currentIndex, goToSlide]);
 
   return (
-    <div className="work-section" id="work">
+    <div className="work-section" id="projects">
       <div className="work-container section-container">
         <h2>
-          My <span>Work</span>
+          My <span>Projects</span>
         </h2>
 
         <div className="carousel-wrapper">
