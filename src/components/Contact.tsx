@@ -8,27 +8,36 @@ const Contact = () => {
         <h3>Contact</h3>
         <div className="contact-flex">
           <div className="contact-box">
-            <h4>Get in Touch</h4>
+            <h4>Email</h4>
             <p>
               <a
                 href="mailto:paramjeetsingh070@gmail.com"
-                target="_blank"
-                rel="noreferrer"
                 data-cursor="disable"
               >
-                Email — paramjeetsingh070@gmail.com
+                paramjeetsingh070@gmail.com
               </a>
             </p>
+            <h4>Phone</h4>
+            <p>303 475 6390</p>
             <h4>Education</h4>
             <p>
-              MS in Information Systems, Northeastern University — 2024–2026
+              MS in Information Systems, Northeastern University — Graduating May 2026
             </p>
             <p>
-              B.Tech Electrical, Electronics and Communications Engineering, CMR University — 2017–2021
+              BE in Electronics and Communication, CMR University — 2021
             </p>
           </div>
           <div className="contact-box">
-            <h4>Connect</h4>
+            <h4>Social</h4>
+            <a
+              href="https://github.com/Paramjeet-singh-neu"
+              target="_blank"
+              rel="noreferrer"
+              data-cursor="disable"
+              className="contact-social"
+            >
+              GitHub <MdArrowOutward />
+            </a>
             <a
               href="https://www.linkedin.com/in/paramjeet5ingh/"
               target="_blank"
@@ -38,28 +47,10 @@ const Contact = () => {
             >
               LinkedIn <MdArrowOutward />
             </a>
-            <a
-              href="/Paramjeet_Singh_Resume.pdf"
-              target="_blank"
-              rel="noreferrer"
-              data-cursor="disable"
-              className="contact-social"
-            >
-              Resume <MdArrowOutward />
-            </a>
-            <a
-              href="mailto:paramjeetsingh070@gmail.com"
-              target="_blank"
-              rel="noreferrer"
-              data-cursor="disable"
-              className="contact-social"
-            >
-              Email <MdArrowOutward />
-            </a>
           </div>
           <div className="contact-box">
             <h2>
-              Crafted by <br /> <span>Paramjeet Singh</span>
+              Portfolio of <br /> <span>Paramjeet Singh</span>
             </h2>
             <h5>
               <MdCopyright /> 2026

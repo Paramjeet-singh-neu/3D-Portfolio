@@ -15,37 +15,49 @@ const Career = () => {
           <div className="career-info-box">
             <div className="career-info-in">
               <div className="career-role">
-                <h4>Instructional Assistant</h4>
-                <h5>Northeastern University</h5>
-              </div>
-              <h3>Aug 2025 - Feb 2026</h3>
-            </div>
-            <p>
-              Supporting instruction and academic initiatives at Northeastern University while pursuing Master&apos;s degree in Information Systems.
-            </p>
-          </div>
-          <div className="career-info-box">
-            <div className="career-info-in">
-              <div className="career-role">
-                <h4>AI Engineer</h4>
-                <h5>Acuvate Software</h5>
+                <h4>AI Engineer – Data & AI Solutions</h4>
+                <h5>Acuvate Software, Bengaluru</h5>
               </div>
               <h3>Mar 2023 – Aug 2024</h3>
             </div>
             <p>
-              Designed and deployed LLM-powered conversational systems using Python, Azure OpenAI, and Azure AI services. Built production AI system integrating Azure OpenAI, OCR, and Azure Functions to automate complaint classification for NYC Police, reducing manual processing by 60%. Developed GPT-4 prompt engineering pipelines and evaluation loops, improving model reliability and reducing misclassification rates by 60%. Built RAG conversational agent using GPT-4, Azure AI Search, vector embeddings for multilingual document search.
+              Built production AI solutions including Azure OpenAI deployments, multilingual enterprise chatbots, RAG systems, OCR pipelines with Azure Functions, and KPI dashboards. Optimized retrieval systems and search implementations for enterprise applications.
             </p>
           </div>
           <div className="career-info-box">
             <div className="career-info-in">
               <div className="career-role">
-                <h4>Software Engineer</h4>
-                <h5>Acuvate Software</h5>
+                <h4>Software Engineer – Data Engineering & Automation</h4>
+                <h5>Acuvate Software, Hyderabad</h5>
               </div>
               <h3>Jun 2021 – Mar 2023</h3>
             </div>
             <p>
-              Built scalable Python-based data ingestion pipelines using Scrapy and BeautifulSoup across 100+ external sources for NLP models. Engineered AI-powered semantic search platform using embeddings within Salesforce, reducing information retrieval time by 35%. Designed and optimized SQL Server ETL pipelines with indexing strategies and query tuning, improving processing speed by 50%. Automated reporting workflows integrating REST APIs with Power BI dashboards, reducing manual reporting effort by 70%.
+              Developed data engineering pipelines, ETL automation systems, and cloud data solutions. Built data processing workflows and optimization systems for enterprise clients.
+            </p>
+          </div>
+          <div className="career-info-box">
+            <div className="career-info-in">
+              <div className="career-role">
+                <h4>MS in Information Systems</h4>
+                <h5>Northeastern University</h5>
+              </div>
+              <h3>Graduating May 2026</h3>
+            </div>
+            <p>
+              Specialized in AI, data engineering, and cloud systems. Focused on practical AI implementation, machine learning systems, and enterprise data architecture.
+            </p>
+          </div>
+          <div className="career-info-box">
+            <div className="career-info-in">
+              <div className="career-role">
+                <h4>BE in Electronics and Communication</h4>
+                <h5>CMR University</h5>
+              </div>
+              <h3>Graduated Jun 2021</h3>
+            </div>
+            <p>
+              Foundation in electronics, communication systems, and software fundamentals. Built strong technical foundation for AI and data engineering career.
             </p>
           </div>
         </div>

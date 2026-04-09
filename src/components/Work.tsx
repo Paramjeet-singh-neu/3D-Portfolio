@@ -5,31 +5,31 @@ import { MdArrowBack, MdArrowForward } from "react-icons/md";
 
 const projects = [
   {
-    title: "QuickQuiz",
-    category: "Agentic AI Application",
-    tools: "LLM Agents, LangChain, OpenAI, Python, Tool-Calling Pipelines",
-    image: "/images/quickquiz.png",
-    link: "https://github.com/paramjeet-singh-neu/QuickQuiz",
-  },
-  {
     title: "IMDb Analytics & Data Warehouse",
-    category: "End-to-End BI System",
-    tools: "Databricks, Azure Data Factory, Power BI, Tableau, Medallion Architecture",
+    category: "End-to-end BI System",
+    tools: "Azure Data Factory, Databricks, Snowflake, dbt, Power BI, Medallion Architecture",
     image: "/images/imdb-analytics.png",
-    link: "https://github.com",
-  },
-  {
-    title: "NYC Police Complaint System",
-    category: "AI-Powered Complaint Classification",
-    tools: "Azure OpenAI, OCR, Azure Functions, License Plate Recognition",
-    image: "/images/complaint-system.png",
     link: "#",
   },
   {
-    title: "RAG-Powered Enterprise Search",
-    category: "Conversational AI with Semantic Search",
-    tools: "GPT-4, Azure AI Search, Vector Embeddings, Semantic Indexing",
-    image: "/images/rag-search.png",
+    title: "QuickQuiz",
+    category: "Agentic AI Quiz Platform",
+    tools: "Python, LangChain, OpenAI, Tool Calling, Error Recovery",
+    image: "/images/quickquiz.png",
+    link: "#",
+  },
+  {
+    title: "FinSight Lite",
+    category: "Vector RAG System",
+    tools: "ChromaDB, GPT-4o-mini, SEC EDGAR Filings, Semantic Search",
+    image: "/images/finsight.png",
+    link: "#",
+  },
+  {
+    title: "SpecHunt",
+    category: "Tech Product Comparison Tool",
+    tools: "React.js, Node.js, MongoDB, Real-time Analytics",
+    image: "/images/spechunt.png",
     link: "#",
   },
 ];

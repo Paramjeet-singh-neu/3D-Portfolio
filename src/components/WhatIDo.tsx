@@ -87,19 +87,19 @@ const WhatIDo = () => {
             <div className="what-corner"></div>
 
             <div className="what-content-in">
-              <h3>AI & NLP SOLUTIONS</h3>
-              <h4>Building Intelligent Systems That Scale</h4>
+              <h3>LLM APPS &amp; AI SYSTEMS</h3>
+              <h4>Production-Ready AI Solutions</h4>
               <p>
-                AI/NLP specialist designing and deploying production-ready AI systems—chatbots, copilots, and intelligent search solutions that drive automation and customer engagement at scale.
+                Building production AI solutions including LLM applications, RAG systems, agentic AI, and autonomous agents. Expertise in prompt engineering, system design, and enterprise AI deployment.
               </p>
               <h5>Skillset & tools</h5>
               <div className="what-content-flex">
-                <div className="what-tags">Azure OpenAI</div>
-                <div className="what-tags">LLMs &amp; NLP</div>
-                <div className="what-tags">Chatbots &amp; Copilots</div>
+                <div className="what-tags">LLMs &amp; Agents</div>
                 <div className="what-tags">RAG Systems</div>
-                <div className="what-tags">Cognitive Services</div>
-                <div className="what-tags">Python</div>
+                <div className="what-tags">Prompt Engineering</div>
+                <div className="what-tags">Tool Calling</div>
+                <div className="what-tags">Azure OpenAI</div>
+                <div className="what-tags">Vector DBs</div>
               </div>
               <div className="what-arrow"></div>
             </div>
@@ -123,20 +123,19 @@ const WhatIDo = () => {
             </div>
             <div className="what-corner"></div>
             <div className="what-content-in">
-              <h3>DATA &amp; CLOUD ENGINEERING</h3>
-              <h4>Building Scalable Data Pipelines &amp; Architectures</h4>
+              <h3>DATA ENGINEERING &amp; CLOUD</h3>
+              <h4>Enterprise Data Architecture</h4>
               <p>
-                Full-stack engineer designing cloud-native data solutions, analytics pipelines, and enterprise applications—from SQL optimization to Power BI dashboards, delivering measurable business outcomes.
+                Architecting and building scalable data pipelines, ETL systems, and cloud infrastructure. Expertise in data warehousing, analytics, and AI-powered data solutions on Azure.
               </p>
               <h5>Skillset & tools</h5>
               <div className="what-content-flex">
-                <div className="what-tags">SQL &amp; Python</div>
-                <div className="what-tags">Power BI</div>
-                <div className="what-tags">ASP.NET Core</div>
-                <div className="what-tags">APIs &amp; Integration</div>
+                <div className="what-tags">Python</div>
+                <div className="what-tags">SQL &amp; Databases</div>
                 <div className="what-tags">Azure Cloud</div>
-                <div className="what-tags">React</div>
                 <div className="what-tags">Data Pipelines</div>
+                <div className="what-tags">ETL &amp; Automation</div>
+                <div className="what-tags">BI &amp; Dashboards</div>
               </div>
               <div className="what-arrow"></div>
             </div>

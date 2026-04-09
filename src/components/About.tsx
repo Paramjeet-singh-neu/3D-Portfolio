@@ -6,7 +6,7 @@ const About = () => {
       <div className="about-me">
         <h3 className="title">About Me</h3>
         <p className="para">
-          AI / Data Engineer with 3+ years of experience building production-ready AI systems, NLP pipelines, and cloud-native data solutions that translate complex data into measurable business outcomes. I&apos;ve delivered end-to-end AI solutions across Azure OpenAI, Python, SQL, Power BI, and modern cloud architectures. Currently pursuing an MS in Information Systems at Northeastern University, with a focus on applied AI, cloud computing, and advanced analytics. I care deeply about building AI that works in the real world—clean data, strong architecture, clear metrics, and responsible deployment.
+          AI Engineer with 3+ years building production AI solutions across LLM apps (RAG, prompt systems, agents), Azure cloud, and data engineering. Experienced in deploying Azure OpenAI, OCR, Azure Functions pipelines, building multilingual enterprise chatbots, optimizing retrieval/search, and delivering KPI dashboards. Currently finishing an MS in Information Systems at Northeastern University.
         </p>
       </div>
     </div>
