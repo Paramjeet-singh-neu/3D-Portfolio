@@ -1,0 +1,71 @@
+
+
+Paramjeet	Singh	
+Boston,	MA	|	(303)	475-6390	|	singh.para@northeastern.edu	|	linkedin.com/in/paramjeet5ingh	|	 paramjeetsingh.me	
+	
+PROFESSIONAL	SUMMARY	
+AI	Engineer	with	3+	years	of	experience	building	production	LLM	applications,	conversational	AI	systems,	and	scalable	
+NLP	pipelines.	Skilled	in	Python,	Retrieval-Augmented	Generation	(RAG),	prompt	engineering,	and	cloud	AI	platforms	
+including	Azure	OpenAI.	Experienced	developing	LLM	pipelines,	agent	workflows,	and	data	processing	systems	to	
+deploy	reliable,	production-ready	AI	solutions.	
+EDUCATION	
+Northeastern	University																	Boston,	MA	
+Master	of	Science,	Information	Systems																Expected	April	2026	
+Grade	:	3.72	
+CMR	University																						Bangalore,	India	
+BTech,	Electronics	and	Communication																Jun	2021	
+SKILLS		
+Programming:	Python,	SQL,	JavaScript,	Java,	C#	
+LLM	&	AI	Engineering:	Large	Language	Models	(LLMs),	GPT-4,	Azure	OpenAI,	Retrieval-Augmented	Generation	(RAG),	
+Prompt	Engineering,	Conversational	AI,	Agentic	AI,	Tool-Calling	Pipelines,	LangChain,	NLP,	NER,	Chatbots	
+Machine	Learning	&	Data	Science:	PyTorch,	Pandas,	NumPy,	Scikit-learn,	Model	Evaluation,	Experimentation,	
+Dataset	Preparation,	Feature	Engineering	
+Backend	&	APIs:	FastAPI,	Flask,	REST	APIs,	Microservices,	Asynchronous	Processing,	Authentication	&	RBAC	
+Data	Engineering:	ETL	Pipelines,	Data	Cleaning,	Data	Validation,	Web	Scraping,	SQL	Server,	Azure	SQL,	MongoDB	
+Cloud	&	Infrastructure:	Azure	OpenAI,	Azure	AI	Search,	Azure	Blob	Storage,	Azure	Functions,	Docker,	CI/CD	
+Analytics:	Power	BI,	Tableau,	A/B	Testing,	Exploratory	Data	Analysis	(EDA),	KPI	Monitoring	
+PROFESSIONAL	EXPERIENCE	
+Acuvate	Software																									Bangalore,	India		
+AI	Engineer–	Data	&	AI	Solutions																															Mar	2023	–	Aug	2024	
+● Designed	and	deployed	LLM-powered	conversational	and	automation	systems	using	Python,	Azure	OpenAI,	and	
+Azure	AI	services	to	support	enterprise	and	public-sector	applications	
+● Built	a	production	AI	system	integrating	Azure	OpenAI,	OCR,	and	Azure	Functions	to	automate	complaint	
+classification	and	routing	using	license	plate	recognition,	reducing	manual	processing	workload	by	60%	
+● Developed	GPT-4	prompt	engineering	pipelines	and	evaluation	loops	to	optimize	classification	workflows,	
+improving	model	reliability	and	reducing	misclassification	rates	by	60%	
+● Built	a	Retrieval-Augmented	Generation	conversational	agent	using	GPT-4,	Azure	AI	Search,	vector	embeddings	
+and	semantic	search	indexes	to	enable	multilingual	document	search	and	enterprise	knowledge	retrieval	
+● Implemented	LLM	orchestration	pipelines,	document	ingestion	workflows,	and	REST	API	integrations,	enabling	
+contextual	responses	and	scalable	deployment	through	microservice-based	architectures	
+● Implemented	monitoring	and	evaluation	workflows	for	LLM	pipelines,	analyzing	response	accuracy,	retrieval	
+quality,	and	user	feedback	to	improve	system	reliability	
+Acuvate	Software																								Hyderabad,	India		
+Software Engineer – Data Engineering & Automation																														Jun	2021	–	Mar	2023	
+● Built	scalable	Python-based	data	ingestion	pipelines	using	Scrapy	and	BeautifulSoup	across	100+	external	sources,	
+generating	structured	datasets	used	for	NLP	models	and	enterprise	search	applications	
+● Engineered	an	AI-powered	semantic	search	platform	using	embeddings	and	sentiment	analysis	within	Salesforce,	
+reducing	internal	information	retrieval	time	by	35%	
+● Designed	and	optimized	SQL	Server	ETL	pipelines	using	indexing	strategies,	stored	procedures,	and	query	tuning,	
+improving	data	processing	speed	and	reliability	by	50%	
+● Automated	reporting	workflows	by	integrating	REST	APIs	with	Power	BI	dashboards,	reducing	manual	reporting	
+effort	by	70%	while	improving	data	accessibility	and	decision-making	
+Northeastern	University																		Boston,	MA	
+Instructional	Assistant																	Aug	2025	–	Feb	2026	
+● Supported	instruction	for	database	design	and	SQL	systems,	guiding	students	through	data	modeling,	
+normalization,	and	query	optimization	concepts	used	in	real-world	data	pipelines	
+● Reviewed	and	debugged	SQL	assignments	and	data	workflows,	reinforcing	best	practices	in	data	validation,	
+schema	design,	and	query	performance	optimization	
+PROJECTS	
+QuickQuiz	–	Agentic	AI	Application	|	GitHub	
+● Built	an	AI-powered	quiz	generation	platform	using	LLM	agents,	enabling	dynamic	question	generation	and	
+validation	through	Python,	LangChain,	and	OpenAI	APIs	
+● Implemented	agentic	AI	workflows	and	tool-calling	pipelines	to	orchestrate	reasoning,	question	validation,	and	
+automated	QA	checks	
+● Developed	error-recovery	mechanisms	and	validation	logic	to	handle	inconsistent	LLM	outputs,	improving	system	
+reliability	and	answer	accuracy	by	35%	
+IMDB Analytics & Data Warehouse Platform - End-to-End BI System	|	GitHub	
+● Built	a	Medallion	Architecture	for	nine	IMDb	datasets	(~25M	records)	using	Databricks	and	Azure	Data	Factory	
+● Designed	dimensional	data	models	and	validated	ETL	pipelines,	ensuring	data	quality,	lineage,	and	reproducibility	
+across	analytics	workflows	
+● Delivered	interactive	Power	BI	and	Tableau	dashboards	analyzing	ratings	trends,	regional	releases,	and	genre	
+performance	across	the	IMDb	dataset	
