@@ -130,11 +130,20 @@ const TechStack = () => {
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY || document.documentElement.scrollTop;
-      const workElement = document.getElementById("work");
-      if (!workElement) return;
-      const threshold = workElement.getBoundingClientRect().top;
+      const workElement = document.querySelector("[id*='work']") || document.querySelector(".work-section") || document.querySelector("[class*='work']");
+      
+      if (!workElement) {
+        // If no work element found, activate after scrolling 1500px
+        console.log("[v0] TechStack: No work element found, using fallback scroll trigger");
+        setIsActive(scrollY > 1500);
+        return;
+      }
+      
+      const threshold = workElement.getBoundingClientRect().top + window.scrollY;
       setIsActive(scrollY > threshold);
+      console.log("[v0] TechStack: Active =", scrollY > threshold, "scrollY =", scrollY, "threshold =", threshold);
     };
+    
     document.querySelectorAll(".header a").forEach((elem) => {
       const element = elem as HTMLAnchorElement;
       element.addEventListener("click", () => {
@@ -146,7 +155,11 @@ const TechStack = () => {
         }, 1000);
       });
     });
+    
     window.addEventListener("scroll", handleScroll);
+    // Initial check
+    setTimeout(handleScroll, 500);
+    
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
