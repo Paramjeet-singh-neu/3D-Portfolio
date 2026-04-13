@@ -83,9 +83,22 @@ const setCharacter = (
           async (gltf) => {
             character = gltf.scene;
             await renderer.compileAsync(character, camera, scene);
+            // Collect all mesh names for debugging
+            const meshNames: string[] = [];
+            
             character.traverse((child: any) => {
               if (child.isMesh) {
                 const mesh = child as THREE.Mesh;
+                meshNames.push(mesh.name);
+
+                // Hide the cap/hat mesh - check various possible names
+                const capNames = ["cap", "hat", "Cap", "Hat", "CAP", "HAT", "headwear", "Headwear", "baseball", "Baseball"];
+                const isCapMesh = capNames.some(name => mesh.name.toLowerCase().includes(name.toLowerCase()));
+                
+                if (isCapMesh) {
+                  mesh.visible = false;
+                  console.log("[v0] Hidden cap mesh:", mesh.name);
+                }
 
                 // Change clothing colors to match site theme
                 if (mesh.material) {
@@ -105,6 +118,9 @@ const setCharacter = (
                 mesh.frustumCulled = true;
               }
             });
+            
+            console.log("[v0] All mesh names in character:", meshNames);
+            
             // Add turban to head bone
             const headBone = character.getObjectByName("spine006"); // Head bone
             if (headBone) {
@@ -112,9 +128,21 @@ const setCharacter = (
               turban.position.set(0, 0.35, 0); // Position on top of head with more height
               turban.scale.set(1.3, 1.2, 1.3); // Larger scale for visibility
               headBone.add(turban);
-              console.log("[v0] Turban added to head bone:", headBone.name, "Turban position:", turban.position);
+              console.log("[v0] Turban added to head bone:", headBone.name);
             } else {
-              console.log("[v0] Head bone (spine006) not found. Available bones:", character.children.map((c: any) => c.name));
+              console.log("[v0] Head bone (spine006) not found. Trying alternative bones...");
+              // Try to find any bone with "head" in the name
+              let foundHead = false;
+              character.traverse((child: any) => {
+                if (!foundHead && child.isBone && child.name.toLowerCase().includes("head")) {
+                  const turban = createTurban();
+                  turban.position.set(0, 0.35, 0);
+                  turban.scale.set(1.3, 1.2, 1.3);
+                  child.add(turban);
+                  console.log("[v0] Turban added to alternative head bone:", child.name);
+                  foundHead = true;
+                }
+              });
             }
 
             resolve(gltf);
