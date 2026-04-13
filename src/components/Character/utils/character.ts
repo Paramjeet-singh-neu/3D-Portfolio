@@ -8,47 +8,48 @@ const createTurban = () => {
   const turbanGroup = new THREE.Group();
   turbanGroup.name = "Turban";
 
-  // Main turban body - wrapped layers
-  const turbanGeometry = new THREE.SphereGeometry(0.18, 32, 24);
-  // Scale to make it more turban-shaped (wider, flatter dome)
-  turbanGeometry.scale(1.15, 0.75, 1.1);
+  // Main turban body - larger dome
+  const turbanGeometry = new THREE.SphereGeometry(0.25, 32, 24);
+  // Scale to make it more turban-shaped (wider at bottom, rounded top)
+  turbanGeometry.scale(1.2, 0.85, 1.2);
   
   const turbanMaterial = new THREE.MeshStandardMaterial({
-    color: new THREE.Color("#1a1a2e"), // Deep navy/black color
-    roughness: 0.8,
-    metalness: 0.1,
+    color: new THREE.Color("#2d1b3d"), // Deep purple-navy color for Sikh turban
+    roughness: 0.7,
+    metalness: 0.15,
+    emissive: new THREE.Color("#1a0f2e"),
   });
   
   const turbanMain = new THREE.Mesh(turbanGeometry, turbanMaterial);
-  turbanMain.position.set(0, 0.06, 0);
+  turbanMain.position.set(0, 0.08, 0);
   turbanMain.castShadow = true;
   turbanMain.receiveShadow = true;
   turbanGroup.add(turbanMain);
 
-  // Turban peak/crest (the pointed front part)
-  const peakGeometry = new THREE.ConeGeometry(0.08, 0.12, 16);
+  // Turban peak/front crest (the pointed front part)
+  const peakGeometry = new THREE.ConeGeometry(0.12, 0.16, 16);
   const peakMaterial = new THREE.MeshStandardMaterial({
-    color: new THREE.Color("#1a1a2e"),
-    roughness: 0.8,
-    metalness: 0.1,
+    color: new THREE.Color("#3d2a4d"),
+    roughness: 0.7,
+    metalness: 0.15,
   });
   const peak = new THREE.Mesh(peakGeometry, peakMaterial);
-  peak.position.set(0, 0.12, 0.08);
-  peak.rotation.x = Math.PI * 0.15;
+  peak.position.set(0, 0.15, 0.12);
+  peak.rotation.x = Math.PI * 0.2;
   peak.castShadow = true;
   turbanGroup.add(peak);
 
-  // Wrap layers (torus rings to simulate wrapped cloth)
+  // Wrap bands around turban
   const wrapMaterial = new THREE.MeshStandardMaterial({
-    color: new THREE.Color("#252540"),
-    roughness: 0.85,
-    metalness: 0.05,
+    color: new THREE.Color("#4a3a5a"),
+    roughness: 0.75,
+    metalness: 0.1,
   });
 
-  for (let i = 0; i < 3; i++) {
-    const wrapGeometry = new THREE.TorusGeometry(0.15 - i * 0.015, 0.025, 8, 32);
+  for (let i = 0; i < 4; i++) {
+    const wrapGeometry = new THREE.TorusGeometry(0.22 - i * 0.02, 0.032, 8, 32);
     const wrap = new THREE.Mesh(wrapGeometry, wrapMaterial);
-    wrap.position.set(0, 0.02 + i * 0.035, 0);
+    wrap.position.set(0, -0.02 + i * 0.045, 0);
     wrap.rotation.x = Math.PI / 2;
     wrap.castShadow = true;
     turbanGroup.add(wrap);
@@ -108,9 +109,12 @@ const setCharacter = (
             const headBone = character.getObjectByName("spine006"); // Head bone
             if (headBone) {
               const turban = createTurban();
-              turban.position.set(0, 0.12, 0.02); // Position on top of head
-              turban.scale.set(1.1, 1.1, 1.1);
+              turban.position.set(0, 0.35, 0); // Position on top of head with more height
+              turban.scale.set(1.3, 1.2, 1.3); // Larger scale for visibility
               headBone.add(turban);
+              console.log("[v0] Turban added to head bone:", headBone.name, "Turban position:", turban.position);
+            } else {
+              console.log("[v0] Head bone (spine006) not found. Available bones:", character.children.map((c: any) => c.name));
             }
 
             resolve(gltf);
