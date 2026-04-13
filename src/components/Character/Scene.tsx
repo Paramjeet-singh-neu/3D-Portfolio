@@ -13,6 +13,53 @@ import {
 import setAnimations from "./utils/animationUtils";
 import { setProgress } from "../Loading";
 
+// Create turban mesh
+const createTurban = () => {
+  const turbanGroup = new THREE.Group();
+  turbanGroup.name = "Turban";
+
+  // Main turban dome
+  const domeGeo = new THREE.SphereGeometry(0.22, 32, 24);
+  domeGeo.scale(1.3, 0.8, 1.3);
+  const domeMat = new THREE.MeshStandardMaterial({
+    color: new THREE.Color("#5a4080"),
+    roughness: 0.6,
+    metalness: 0.2,
+  });
+  const dome = new THREE.Mesh(domeGeo, domeMat);
+  dome.position.set(0, 0.12, 0);
+  turbanGroup.add(dome);
+
+  // Wrap bands
+  const bandColors = ["#6a5090", "#7a60a0", "#8a70b0", "#9a80c0"];
+  for (let i = 0; i < 4; i++) {
+    const bandGeo = new THREE.TorusGeometry(0.24 - i * 0.02, 0.035, 8, 48);
+    const bandMat = new THREE.MeshStandardMaterial({
+      color: new THREE.Color(bandColors[i]),
+      roughness: 0.65,
+      metalness: 0.15,
+    });
+    const band = new THREE.Mesh(bandGeo, bandMat);
+    band.rotation.x = Math.PI / 2;
+    band.position.y = 0.02 + i * 0.06;
+    turbanGroup.add(band);
+  }
+
+  // Front peak
+  const peakGeo = new THREE.ConeGeometry(0.1, 0.18, 12);
+  const peakMat = new THREE.MeshStandardMaterial({
+    color: new THREE.Color("#7a5eaa"),
+    roughness: 0.6,
+    metalness: 0.2,
+  });
+  const peak = new THREE.Mesh(peakGeo, peakMat);
+  peak.position.set(0, 0.18, 0.12);
+  peak.rotation.x = Math.PI * 0.3;
+  turbanGroup.add(peak);
+
+  return turbanGroup;
+};
+
 const Scene = () => {
   const canvasDiv = useRef<HTMLDivElement | null>(null);
   const hoverDivRef = useRef<HTMLDivElement>(null);
@@ -63,6 +110,15 @@ const Scene = () => {
           scene.add(character);
           headBone = character.getObjectByName("spine006") || null;
           screenLight = character.getObjectByName("screenlight") || null;
+          
+          // Add turban to headBone
+          if (headBone) {
+            const turban = createTurban();
+            turban.position.set(0, 0.18, 0.02);
+            turban.scale.set(1.1, 1.0, 1.1);
+            headBone.add(turban);
+          }
+          
           progress.loaded().then(() => {
             setTimeout(() => {
               light.turnOnLights();
