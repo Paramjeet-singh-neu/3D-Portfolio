@@ -3,70 +3,85 @@ import { DRACOLoader, GLTF, GLTFLoader } from "three-stdlib";
 import { setCharTimeline, setAllTimeline } from "../../utils/GsapScroll";
 import { decryptFile } from "./decrypt";
 
-// Create a Sikh turban (Dastar) mesh
+// Create a Sikh turban (Dastar) mesh - using simple, visible geometries
 const createTurban = () => {
   const turbanGroup = new THREE.Group();
   turbanGroup.name = "Turban";
 
-  // Main turban dome - VERY large and prominent
-  const domeGeometry = new THREE.SphereGeometry(0.6, 32, 24);
-  domeGeometry.scale(1.4, 0.75, 1.4); // Make it much wider and flatter
+  // Turban body - using LatheGeometry for a traditional turban dome shape
+  const points = [];
+  points.push(new THREE.Vector2(0.0, 0.0));
+  points.push(new THREE.Vector2(0.5, 0.0));
+  points.push(new THREE.Vector2(0.6, 0.2));
+  points.push(new THREE.Vector2(0.55, 0.4));
+  points.push(new THREE.Vector2(0.3, 0.5));
+  points.push(new THREE.Vector2(0.0, 0.5));
   
-  const domeMaterial = new THREE.MeshStandardMaterial({
-    color: new THREE.Color("#5a4a7a"), // Rich purple-navy - lighter for visibility
-    roughness: 0.65,
-    metalness: 0.2,
-    wireframe: false,
+  const latheGeometry = new THREE.LatheGeometry(points, 32);
+  const turbMaterial = new THREE.MeshStandardMaterial({
+    color: new THREE.Color("#6b4e99"), // Bright purple
+    roughness: 0.6,
+    metalness: 0.25,
+    side: THREE.DoubleSide,
   });
   
-  const dome = new THREE.Mesh(domeGeometry, domeMaterial);
-  dome.position.set(0, 0.15, 0);
-  dome.castShadow = true;
-  dome.receiveShadow = true;
-  turbanGroup.add(dome);
+  const lathe = new THREE.Mesh(latheGeometry, turbMaterial);
+  lathe.scale.set(1.2, 1.0, 1.2);
+  lathe.castShadow = true;
+  lathe.receiveShadow = true;
+  turbanGroup.add(lathe);
 
-  // Turban base ring - large cylinder
-  const baseGeometry = new THREE.CylinderGeometry(0.65, 0.65, 0.18, 32);
-  const baseMaterial = new THREE.MeshStandardMaterial({
-    color: new THREE.Color("#3a2a6a"),
-    roughness: 0.7,
-    metalness: 0.15,
-  });
-  const base = new THREE.Mesh(baseGeometry, baseMaterial);
-  base.position.set(0, -0.12, 0);
-  base.castShadow = true;
-  base.receiveShadow = true;
-  turbanGroup.add(base);
-
-  // Front peak - large and distinctive
-  const peakGeometry = new THREE.ConeGeometry(0.28, 0.38, 16);
-  const peakMaterial = new THREE.MeshStandardMaterial({
-    color: new THREE.Color("#6a5a8a"),
+  // Wrap band 1
+  const band1Geo = new THREE.TorusGeometry(0.55, 0.08, 8, 100);
+  const bandMat1 = new THREE.MeshStandardMaterial({
+    color: new THREE.Color("#8b6eb9"),
     roughness: 0.65,
     metalness: 0.2,
   });
-  const peak = new THREE.Mesh(peakGeometry, peakMaterial);
-  peak.position.set(0, 0.3, 0.28);
-  peak.rotation.x = Math.PI * 0.3;
-  peak.castShadow = true;
-  peak.receiveShadow = true;
-  turbanGroup.add(peak);
+  const band1 = new THREE.Mesh(band1Geo, bandMat1);
+  band1.rotation.x = Math.PI / 2.5;
+  band1.position.y = 0.08;
+  band1.castShadow = true;
+  turbanGroup.add(band1);
 
-  // Prominent wrap bands - very visible cloth wrapping layers
-  const wrapMaterial = new THREE.MeshStandardMaterial({
-    color: new THREE.Color("#7a6aaa"), // Much lighter purple for contrast
-    roughness: 0.7,
-    metalness: 0.15,
+  // Wrap band 2
+  const band2Geo = new THREE.TorusGeometry(0.52, 0.08, 8, 100);
+  const bandMat2 = new THREE.MeshStandardMaterial({
+    color: new THREE.Color("#9b7ec9"),
+    roughness: 0.65,
+    metalness: 0.2,
   });
+  const band2 = new THREE.Mesh(band2Geo, bandMat2);
+  band2.rotation.x = Math.PI / 2.5;
+  band2.position.y = 0.22;
+  band2.castShadow = true;
+  turbanGroup.add(band2);
 
-  for (let i = 0; i < 8; i++) {
-    const wrapGeometry = new THREE.CylinderGeometry(0.62, 0.62, 0.1, 32);
-    const wrap = new THREE.Mesh(wrapGeometry, wrapMaterial);
-    wrap.position.set(0, -0.15 + i * 0.1, 0);
-    wrap.castShadow = true;
-    wrap.receiveShadow = true;
-    turbanGroup.add(wrap);
-  }
+  // Wrap band 3
+  const band3Geo = new THREE.TorusGeometry(0.48, 0.08, 8, 100);
+  const bandMat3 = new THREE.MeshStandardMaterial({
+    color: new THREE.Color("#ab8ed9"),
+    roughness: 0.65,
+    metalness: 0.2,
+  });
+  const band3 = new THREE.Mesh(band3Geo, bandMat3);
+  band3.rotation.x = Math.PI / 2.5;
+  band3.position.y = 0.36;
+  band3.castShadow = true;
+  turbanGroup.add(band3);
+
+  // Front crest
+  const crestGeo = new THREE.ConeGeometry(0.2, 0.35, 12);
+  const crestMat = new THREE.MeshStandardMaterial({
+    color: new THREE.Color("#7a5eaa"),
+    roughness: 0.6,
+    metalness: 0.25,
+  });
+  const crest = new THREE.Mesh(crestGeo, crestMat);
+  crest.position.set(0, 0.35, 0.3);
+  crest.rotation.x = Math.PI * 0.25;
+  crest.castShadow = true;
+  turbanGroup.add(crest);
 
   return turbanGroup;
 };
@@ -134,13 +149,16 @@ const setCharacter = (
             
             console.log("[v0] All mesh names in character:", meshNames);
             
-            // Add turban directly to character group (not to bone, so it won't be affected by bone scaling)
+            // Add turban directly to character group
             const turban = createTurban();
-            // Position turban at roughly where the character's head is
-            turban.position.set(0, 3.8, 0.2); // Height adjusted for character
-            turban.scale.set(2, 2, 2); // Much larger scale
+            turban.position.set(0, 3.85, 0.15); // Positioned on top of head
+            turban.scale.set(2.2, 1.8, 2.2); // Scale for visibility
             character.add(turban);
-            console.log("[v0] Turban added to character root at position:", turban.position, "scale:", turban.scale);
+            console.log("[v0] ✅ Turban created and added to character");
+            console.log("[v0] Turban children count:", turban.children.length);
+            turban.children.forEach((child: any, i: number) => {
+              console.log(`[v0] Turban child ${i}: ${child.name}, visible: ${(child as any).visible}`);
+            });
 
             resolve(gltf);
             setCharTimeline(character, camera);
