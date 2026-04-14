@@ -13,76 +13,107 @@ import {
 import setAnimations from "./utils/animationUtils";
 import { setProgress } from "../Loading";
 
-// Create authentic Punjabi turban (Pagg) with cloth folds
+// Create authentic black Punjabi Pagg with smooth dome and diagonal cloth folds
 const createTurban = () => {
   const turbanGroup = new THREE.Group();
   turbanGroup.name = "PunjabiPagg";
 
-  // Traditional deep navy blue colors
-  const baseColor = new THREE.Color("#0d1b3e");
-  const foldDark = new THREE.Color("#162955");
-  const foldLight = new THREE.Color("#1e3a6e");
+  // Black color palette matching the reference photo
+  const blackMain = new THREE.Color("#1a1a1a");
+  const blackFold = new THREE.Color("#252525");
+  const blackHighlight = new THREE.Color("#333333");
 
-  // Base foundation cylinder
-  const baseGeo = new THREE.CylinderGeometry(0.19, 0.21, 0.06, 32);
-  const baseMat = new THREE.MeshStandardMaterial({ color: baseColor, roughness: 0.8 });
+  // Main turban dome - smooth rounded shape
+  const domeGeo = new THREE.SphereGeometry(0.22, 48, 32);
+  domeGeo.scale(1.0, 0.75, 1.0); // Slightly flattened dome
+  const domeMat = new THREE.MeshStandardMaterial({
+    color: blackMain,
+    roughness: 0.85,
+    metalness: 0.05,
+  });
+  const dome = new THREE.Mesh(domeGeo, domeMat);
+  dome.position.y = 0.08;
+  turbanGroup.add(dome);
+
+  // Lower band/base that sits on head
+  const baseGeo = new THREE.CylinderGeometry(0.21, 0.22, 0.06, 48);
+  const baseMat = new THREE.MeshStandardMaterial({
+    color: blackMain,
+    roughness: 0.85,
+  });
   const base = new THREE.Mesh(baseGeo, baseMat);
   base.position.y = -0.02;
   turbanGroup.add(base);
 
-  // Main dome body
-  const domeGeo = new THREE.SphereGeometry(0.18, 32, 20, 0, Math.PI * 2, 0, Math.PI * 0.55);
-  domeGeo.scale(1.05, 0.85, 1.05);
-  const domeMat = new THREE.MeshStandardMaterial({ color: baseColor, roughness: 0.75 });
-  const dome = new THREE.Mesh(domeGeo, domeMat);
-  dome.position.y = 0.01;
-  turbanGroup.add(dome);
-
-  // Horizontal cloth fold wraps - the distinctive wrapped layers
-  for (let i = 0; i < 8; i++) {
-    const radius = 0.175 - i * 0.006;
-    const foldGeo = new THREE.TorusGeometry(radius, 0.014, 6, 64);
-    const foldMat = new THREE.MeshStandardMaterial({
-      color: i % 2 === 0 ? foldDark : foldLight,
-      roughness: 0.85,
+  // Diagonal cloth fold lines - the characteristic wrapped look
+  // These go diagonally across the turban surface
+  for (let i = 0; i < 10; i++) {
+    // Create diagonal fold using thin curved cylinders
+    const curve = new THREE.QuadraticBezierCurve3(
+      new THREE.Vector3(-0.2, 0.02 + i * 0.014, 0.08),
+      new THREE.Vector3(0, 0.06 + i * 0.012, 0.22),
+      new THREE.Vector3(0.2, 0.02 + i * 0.014, 0.08)
+    );
+    const tubeGeo = new THREE.TubeGeometry(curve, 20, 0.008, 6, false);
+    const tubeMat = new THREE.MeshStandardMaterial({
+      color: i % 2 === 0 ? blackFold : blackHighlight,
+      roughness: 0.9,
     });
-    const fold = new THREE.Mesh(foldGeo, foldMat);
-    fold.rotation.x = Math.PI / 2;
-    fold.position.y = 0.01 + i * 0.018;
-    turbanGroup.add(fold);
+    const tube = new THREE.Mesh(tubeGeo, tubeMat);
+    turbanGroup.add(tube);
   }
 
-  // Vertical pleats around the turban showing wrapped fabric
-  for (let i = 0; i < 12; i++) {
-    const angle = (i / 12) * Math.PI * 2;
-    const pleatGeo = new THREE.BoxGeometry(0.008, 0.13, 0.022);
-    const pleatMat = new THREE.MeshStandardMaterial({ color: foldDark, roughness: 0.9 });
-    const pleat = new THREE.Mesh(pleatGeo, pleatMat);
-    pleat.position.set(Math.sin(angle) * 0.165, 0.065, Math.cos(angle) * 0.165);
-    pleat.rotation.y = angle;
-    turbanGroup.add(pleat);
+  // Back diagonal folds
+  for (let i = 0; i < 8; i++) {
+    const curve = new THREE.QuadraticBezierCurve3(
+      new THREE.Vector3(-0.18, 0.03 + i * 0.015, -0.1),
+      new THREE.Vector3(0, 0.07 + i * 0.012, -0.2),
+      new THREE.Vector3(0.18, 0.03 + i * 0.015, -0.1)
+    );
+    const tubeGeo = new THREE.TubeGeometry(curve, 20, 0.007, 6, false);
+    const tubeMat = new THREE.MeshStandardMaterial({
+      color: blackFold,
+      roughness: 0.9,
+    });
+    const tube = new THREE.Mesh(tubeGeo, tubeMat);
+    turbanGroup.add(tube);
   }
 
-  // Top center piece
-  const topGeo = new THREE.SphereGeometry(0.035, 16, 12);
-  topGeo.scale(1, 0.5, 1);
-  const topMat = new THREE.MeshStandardMaterial({ color: foldLight, roughness: 0.7 });
-  const topKnot = new THREE.Mesh(topGeo, topMat);
-  topKnot.position.y = 0.145;
-  turbanGroup.add(topKnot);
+  // Side wrapping folds - left side
+  for (let i = 0; i < 6; i++) {
+    const curve = new THREE.QuadraticBezierCurve3(
+      new THREE.Vector3(-0.2, 0.03 + i * 0.018, 0),
+      new THREE.Vector3(-0.22, 0.08 + i * 0.012, 0),
+      new THREE.Vector3(-0.18, 0.14, 0)
+    );
+    const tubeGeo = new THREE.TubeGeometry(curve, 12, 0.006, 6, false);
+    const tubeMat = new THREE.MeshStandardMaterial({ color: blackFold, roughness: 0.9 });
+    const tube = new THREE.Mesh(tubeGeo, tubeMat);
+    turbanGroup.add(tube);
+  }
 
-  // Front fan/puff - the distinctive peaked front of Punjabi turban
-  const fanShape = new THREE.Shape();
-  fanShape.moveTo(0, 0);
-  fanShape.quadraticCurveTo(0.06, 0.04, 0.04, 0.09);
-  fanShape.quadraticCurveTo(0, 0.11, -0.04, 0.09);
-  fanShape.quadraticCurveTo(-0.06, 0.04, 0, 0);
-  const fanGeo = new THREE.ExtrudeGeometry(fanShape, { depth: 0.03, bevelEnabled: false });
-  const fanMat = new THREE.MeshStandardMaterial({ color: foldLight, roughness: 0.75 });
-  const fan = new THREE.Mesh(fanGeo, fanMat);
-  fan.position.set(0, 0.06, 0.16);
-  fan.rotation.x = -0.2;
-  turbanGroup.add(fan);
+  // Side wrapping folds - right side
+  for (let i = 0; i < 6; i++) {
+    const curve = new THREE.QuadraticBezierCurve3(
+      new THREE.Vector3(0.2, 0.03 + i * 0.018, 0),
+      new THREE.Vector3(0.22, 0.08 + i * 0.012, 0),
+      new THREE.Vector3(0.18, 0.14, 0)
+    );
+    const tubeGeo = new THREE.TubeGeometry(curve, 12, 0.006, 6, false);
+    const tubeMat = new THREE.MeshStandardMaterial({ color: blackFold, roughness: 0.9 });
+    const tube = new THREE.Mesh(tubeGeo, tubeMat);
+    turbanGroup.add(tube);
+  }
+
+  // Top smoothing cap
+  const topGeo = new THREE.SphereGeometry(0.12, 32, 16, 0, Math.PI * 2, 0, Math.PI * 0.5);
+  const topMat = new THREE.MeshStandardMaterial({
+    color: blackMain,
+    roughness: 0.85,
+  });
+  const top = new THREE.Mesh(topGeo, topMat);
+  top.position.y = 0.14;
+  turbanGroup.add(top);
 
   return turbanGroup;
 };
@@ -141,8 +172,8 @@ const Scene = () => {
           // Add Punjabi turban to headBone
           if (headBone) {
             const turban = createTurban();
-            turban.position.set(0, 1.4, 0.1);
-            turban.scale.set(8, 7, 8);
+            turban.position.set(0, 1.2, 0);
+            turban.scale.set(6, 5.5, 6);
             headBone.add(turban);
           }
           
