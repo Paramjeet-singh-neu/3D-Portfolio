@@ -120,16 +120,13 @@ const Scene = () => {
           headBone = character.getObjectByName("spine006") || null;
           screenLight = character.getObjectByName("screenlight") || null;
           
-          // Add turban to headBone
+          // Add turban to headBone - needs to be much larger since headBone is small
           if (headBone) {
             const turban = createTurban();
-            turban.position.set(0, 0.18, 0.02);
-            turban.scale.set(1.1, 1.0, 1.1);
+            turban.position.set(0, 1.8, 0.2); // Much higher position
+            turban.scale.set(12, 10, 12); // Much larger scale to be visible
             headBone.add(turban);
-            console.log("[v0] Turban added successfully to headBone");
-            console.log("[v0] Turban children:", turban.children.length);
-          } else {
-            console.log("[v0] ERROR: headBone not found! Available bones:", character.children.map((c: any) => c.name));
+            console.log("[v0] Turban added - position:", turban.position, "scale:", turban.scale);
           }
           
           progress.loaded().then(() => {
