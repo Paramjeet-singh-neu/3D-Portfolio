@@ -28,7 +28,10 @@ const createTurban = () => {
   });
   const dome = new THREE.Mesh(domeGeo, domeMat);
   dome.position.set(0, 0.12, 0);
+  dome.castShadow = true;
+  dome.receiveShadow = true;
   turbanGroup.add(dome);
+  console.log("[v0] Dome added to turban");
 
   // Wrap bands
   const bandColors = ["#6a5090", "#7a60a0", "#8a70b0", "#9a80c0"];
@@ -42,8 +45,11 @@ const createTurban = () => {
     const band = new THREE.Mesh(bandGeo, bandMat);
     band.rotation.x = Math.PI / 2;
     band.position.y = 0.02 + i * 0.06;
+    band.castShadow = true;
+    band.receiveShadow = true;
     turbanGroup.add(band);
   }
+  console.log("[v0] Wrap bands added");
 
   // Front peak
   const peakGeo = new THREE.ConeGeometry(0.1, 0.18, 12);
@@ -55,7 +61,10 @@ const createTurban = () => {
   const peak = new THREE.Mesh(peakGeo, peakMat);
   peak.position.set(0, 0.18, 0.12);
   peak.rotation.x = Math.PI * 0.3;
+  peak.castShadow = true;
+  peak.receiveShadow = true;
   turbanGroup.add(peak);
+  console.log("[v0] Peak added. Total turban children:", turbanGroup.children.length);
 
   return turbanGroup;
 };
@@ -117,6 +126,10 @@ const Scene = () => {
             turban.position.set(0, 0.18, 0.02);
             turban.scale.set(1.1, 1.0, 1.1);
             headBone.add(turban);
+            console.log("[v0] Turban added successfully to headBone");
+            console.log("[v0] Turban children:", turban.children.length);
+          } else {
+            console.log("[v0] ERROR: headBone not found! Available bones:", character.children.map((c: any) => c.name));
           }
           
           progress.loaded().then(() => {
