@@ -13,6 +13,111 @@ import {
 import setAnimations from "./utils/animationUtils";
 import { setProgress } from "../Loading";
 
+// Create authentic black Punjabi Pagg with smooth dome and diagonal cloth folds
+const createTurban = () => {
+  const turbanGroup = new THREE.Group();
+  turbanGroup.name = "PunjabiPagg";
+
+  // Black color palette matching the reference photo
+  const blackMain = new THREE.Color("#1a1a1a");
+  const blackFold = new THREE.Color("#252525");
+  const blackHighlight = new THREE.Color("#333333");
+
+  // Main turban dome - smooth rounded shape
+  const domeGeo = new THREE.SphereGeometry(0.22, 48, 32);
+  domeGeo.scale(1.0, 0.75, 1.0); // Slightly flattened dome
+  const domeMat = new THREE.MeshStandardMaterial({
+    color: blackMain,
+    roughness: 0.85,
+    metalness: 0.05,
+  });
+  const dome = new THREE.Mesh(domeGeo, domeMat);
+  dome.position.y = 0.08;
+  turbanGroup.add(dome);
+
+  // Lower band/base that sits on head
+  const baseGeo = new THREE.CylinderGeometry(0.21, 0.22, 0.06, 48);
+  const baseMat = new THREE.MeshStandardMaterial({
+    color: blackMain,
+    roughness: 0.85,
+  });
+  const base = new THREE.Mesh(baseGeo, baseMat);
+  base.position.y = -0.02;
+  turbanGroup.add(base);
+
+  // Diagonal cloth fold lines - the characteristic wrapped look
+  // These go diagonally across the turban surface
+  for (let i = 0; i < 10; i++) {
+    // Create diagonal fold using thin curved cylinders
+    const curve = new THREE.QuadraticBezierCurve3(
+      new THREE.Vector3(-0.2, 0.02 + i * 0.014, 0.08),
+      new THREE.Vector3(0, 0.06 + i * 0.012, 0.22),
+      new THREE.Vector3(0.2, 0.02 + i * 0.014, 0.08)
+    );
+    const tubeGeo = new THREE.TubeGeometry(curve, 20, 0.008, 6, false);
+    const tubeMat = new THREE.MeshStandardMaterial({
+      color: i % 2 === 0 ? blackFold : blackHighlight,
+      roughness: 0.9,
+    });
+    const tube = new THREE.Mesh(tubeGeo, tubeMat);
+    turbanGroup.add(tube);
+  }
+
+  // Back diagonal folds
+  for (let i = 0; i < 8; i++) {
+    const curve = new THREE.QuadraticBezierCurve3(
+      new THREE.Vector3(-0.18, 0.03 + i * 0.015, -0.1),
+      new THREE.Vector3(0, 0.07 + i * 0.012, -0.2),
+      new THREE.Vector3(0.18, 0.03 + i * 0.015, -0.1)
+    );
+    const tubeGeo = new THREE.TubeGeometry(curve, 20, 0.007, 6, false);
+    const tubeMat = new THREE.MeshStandardMaterial({
+      color: blackFold,
+      roughness: 0.9,
+    });
+    const tube = new THREE.Mesh(tubeGeo, tubeMat);
+    turbanGroup.add(tube);
+  }
+
+  // Side wrapping folds - left side
+  for (let i = 0; i < 6; i++) {
+    const curve = new THREE.QuadraticBezierCurve3(
+      new THREE.Vector3(-0.2, 0.03 + i * 0.018, 0),
+      new THREE.Vector3(-0.22, 0.08 + i * 0.012, 0),
+      new THREE.Vector3(-0.18, 0.14, 0)
+    );
+    const tubeGeo = new THREE.TubeGeometry(curve, 12, 0.006, 6, false);
+    const tubeMat = new THREE.MeshStandardMaterial({ color: blackFold, roughness: 0.9 });
+    const tube = new THREE.Mesh(tubeGeo, tubeMat);
+    turbanGroup.add(tube);
+  }
+
+  // Side wrapping folds - right side
+  for (let i = 0; i < 6; i++) {
+    const curve = new THREE.QuadraticBezierCurve3(
+      new THREE.Vector3(0.2, 0.03 + i * 0.018, 0),
+      new THREE.Vector3(0.22, 0.08 + i * 0.012, 0),
+      new THREE.Vector3(0.18, 0.14, 0)
+    );
+    const tubeGeo = new THREE.TubeGeometry(curve, 12, 0.006, 6, false);
+    const tubeMat = new THREE.MeshStandardMaterial({ color: blackFold, roughness: 0.9 });
+    const tube = new THREE.Mesh(tubeGeo, tubeMat);
+    turbanGroup.add(tube);
+  }
+
+  // Top smoothing cap
+  const topGeo = new THREE.SphereGeometry(0.12, 32, 16, 0, Math.PI * 2, 0, Math.PI * 0.5);
+  const topMat = new THREE.MeshStandardMaterial({
+    color: blackMain,
+    roughness: 0.85,
+  });
+  const top = new THREE.Mesh(topGeo, topMat);
+  top.position.y = 0.14;
+  turbanGroup.add(top);
+
+  return turbanGroup;
+};
+
 const Scene = () => {
   const canvasDiv = useRef<HTMLDivElement | null>(null);
   const hoverDivRef = useRef<HTMLDivElement>(null);
@@ -63,6 +168,15 @@ const Scene = () => {
           scene.add(character);
           headBone = character.getObjectByName("spine006") || null;
           screenLight = character.getObjectByName("screenlight") || null;
+          
+          // Add Punjabi turban to headBone
+          if (headBone) {
+            const turban = createTurban();
+            turban.position.set(0, 1.2, 0);
+            turban.scale.set(6, 5.5, 6);
+            headBone.add(turban);
+          }
+          
           progress.loaded().then(() => {
             setTimeout(() => {
               light.turnOnLights();

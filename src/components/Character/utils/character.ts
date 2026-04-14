@@ -28,9 +28,21 @@ const setCharacter = (
           async (gltf) => {
             character = gltf.scene;
             await renderer.compileAsync(character, camera, scene);
+            // Collect all mesh names for debugging
+            const meshNames: string[] = [];
+            
             character.traverse((child: any) => {
               if (child.isMesh) {
                 const mesh = child as THREE.Mesh;
+                meshNames.push(mesh.name);
+
+                // Hide the cap/hat mesh - check various possible names
+                const capNames = ["cap", "hat", "Cap", "Hat", "CAP", "HAT", "headwear", "Headwear", "baseball", "Baseball"];
+                const isCapMesh = capNames.some(name => mesh.name.toLowerCase().includes(name.toLowerCase()));
+                
+                if (isCapMesh) {
+                  mesh.visible = false;
+                }
 
                 // Change clothing colors to match site theme
                 if (mesh.material) {
@@ -50,6 +62,7 @@ const setCharacter = (
                 mesh.frustumCulled = true;
               }
             });
+            
             resolve(gltf);
             setCharTimeline(character, camera);
             setAllTimeline();
