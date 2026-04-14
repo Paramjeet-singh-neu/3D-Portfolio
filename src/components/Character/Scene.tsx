@@ -141,8 +141,8 @@ const Scene = () => {
           // Add Punjabi turban to headBone
           if (headBone) {
             const turban = createTurban();
-            turban.position.set(0, 0.9, 0.1);
-            turban.scale.set(5.5, 5, 5.5);
+            turban.position.set(0, 1.4, 0.1);
+            turban.scale.set(8, 7, 8);
             headBone.add(turban);
           }
           
