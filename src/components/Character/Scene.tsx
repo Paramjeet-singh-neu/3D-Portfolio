@@ -13,58 +13,76 @@ import {
 import setAnimations from "./utils/animationUtils";
 import { setProgress } from "../Loading";
 
-// Create turban mesh
+// Create authentic Punjabi turban (Pagg) with cloth folds
 const createTurban = () => {
   const turbanGroup = new THREE.Group();
-  turbanGroup.name = "Turban";
+  turbanGroup.name = "PunjabiPagg";
 
-  // Main turban dome
-  const domeGeo = new THREE.SphereGeometry(0.22, 32, 24);
-  domeGeo.scale(1.3, 0.8, 1.3);
-  const domeMat = new THREE.MeshStandardMaterial({
-    color: new THREE.Color("#5a4080"),
-    roughness: 0.6,
-    metalness: 0.2,
-  });
+  // Traditional deep navy blue colors
+  const baseColor = new THREE.Color("#0d1b3e");
+  const foldDark = new THREE.Color("#162955");
+  const foldLight = new THREE.Color("#1e3a6e");
+
+  // Base foundation cylinder
+  const baseGeo = new THREE.CylinderGeometry(0.19, 0.21, 0.06, 32);
+  const baseMat = new THREE.MeshStandardMaterial({ color: baseColor, roughness: 0.8 });
+  const base = new THREE.Mesh(baseGeo, baseMat);
+  base.position.y = -0.02;
+  turbanGroup.add(base);
+
+  // Main dome body
+  const domeGeo = new THREE.SphereGeometry(0.18, 32, 20, 0, Math.PI * 2, 0, Math.PI * 0.55);
+  domeGeo.scale(1.05, 0.85, 1.05);
+  const domeMat = new THREE.MeshStandardMaterial({ color: baseColor, roughness: 0.75 });
   const dome = new THREE.Mesh(domeGeo, domeMat);
-  dome.position.set(0, 0.12, 0);
-  dome.castShadow = true;
-  dome.receiveShadow = true;
+  dome.position.y = 0.01;
   turbanGroup.add(dome);
-  console.log("[v0] Dome added to turban");
 
-  // Wrap bands
-  const bandColors = ["#6a5090", "#7a60a0", "#8a70b0", "#9a80c0"];
-  for (let i = 0; i < 4; i++) {
-    const bandGeo = new THREE.TorusGeometry(0.24 - i * 0.02, 0.035, 8, 48);
-    const bandMat = new THREE.MeshStandardMaterial({
-      color: new THREE.Color(bandColors[i]),
-      roughness: 0.65,
-      metalness: 0.15,
+  // Horizontal cloth fold wraps - the distinctive wrapped layers
+  for (let i = 0; i < 8; i++) {
+    const radius = 0.175 - i * 0.006;
+    const foldGeo = new THREE.TorusGeometry(radius, 0.014, 6, 64);
+    const foldMat = new THREE.MeshStandardMaterial({
+      color: i % 2 === 0 ? foldDark : foldLight,
+      roughness: 0.85,
     });
-    const band = new THREE.Mesh(bandGeo, bandMat);
-    band.rotation.x = Math.PI / 2;
-    band.position.y = 0.02 + i * 0.06;
-    band.castShadow = true;
-    band.receiveShadow = true;
-    turbanGroup.add(band);
+    const fold = new THREE.Mesh(foldGeo, foldMat);
+    fold.rotation.x = Math.PI / 2;
+    fold.position.y = 0.01 + i * 0.018;
+    turbanGroup.add(fold);
   }
-  console.log("[v0] Wrap bands added");
 
-  // Front peak
-  const peakGeo = new THREE.ConeGeometry(0.1, 0.18, 12);
-  const peakMat = new THREE.MeshStandardMaterial({
-    color: new THREE.Color("#7a5eaa"),
-    roughness: 0.6,
-    metalness: 0.2,
-  });
-  const peak = new THREE.Mesh(peakGeo, peakMat);
-  peak.position.set(0, 0.18, 0.12);
-  peak.rotation.x = Math.PI * 0.3;
-  peak.castShadow = true;
-  peak.receiveShadow = true;
-  turbanGroup.add(peak);
-  console.log("[v0] Peak added. Total turban children:", turbanGroup.children.length);
+  // Vertical pleats around the turban showing wrapped fabric
+  for (let i = 0; i < 12; i++) {
+    const angle = (i / 12) * Math.PI * 2;
+    const pleatGeo = new THREE.BoxGeometry(0.008, 0.13, 0.022);
+    const pleatMat = new THREE.MeshStandardMaterial({ color: foldDark, roughness: 0.9 });
+    const pleat = new THREE.Mesh(pleatGeo, pleatMat);
+    pleat.position.set(Math.sin(angle) * 0.165, 0.065, Math.cos(angle) * 0.165);
+    pleat.rotation.y = angle;
+    turbanGroup.add(pleat);
+  }
+
+  // Top center piece
+  const topGeo = new THREE.SphereGeometry(0.035, 16, 12);
+  topGeo.scale(1, 0.5, 1);
+  const topMat = new THREE.MeshStandardMaterial({ color: foldLight, roughness: 0.7 });
+  const topKnot = new THREE.Mesh(topGeo, topMat);
+  topKnot.position.y = 0.145;
+  turbanGroup.add(topKnot);
+
+  // Front fan/puff - the distinctive peaked front of Punjabi turban
+  const fanShape = new THREE.Shape();
+  fanShape.moveTo(0, 0);
+  fanShape.quadraticCurveTo(0.06, 0.04, 0.04, 0.09);
+  fanShape.quadraticCurveTo(0, 0.11, -0.04, 0.09);
+  fanShape.quadraticCurveTo(-0.06, 0.04, 0, 0);
+  const fanGeo = new THREE.ExtrudeGeometry(fanShape, { depth: 0.03, bevelEnabled: false });
+  const fanMat = new THREE.MeshStandardMaterial({ color: foldLight, roughness: 0.75 });
+  const fan = new THREE.Mesh(fanGeo, fanMat);
+  fan.position.set(0, 0.06, 0.16);
+  fan.rotation.x = -0.2;
+  turbanGroup.add(fan);
 
   return turbanGroup;
 };
@@ -120,13 +138,12 @@ const Scene = () => {
           headBone = character.getObjectByName("spine006") || null;
           screenLight = character.getObjectByName("screenlight") || null;
           
-          // Add turban to headBone - needs to be much larger since headBone is small
+          // Add Punjabi turban to headBone
           if (headBone) {
             const turban = createTurban();
-            turban.position.set(0, 1.8, 0.2); // Much higher position
-            turban.scale.set(12, 10, 12); // Much larger scale to be visible
+            turban.position.set(0, 0.9, 0.1);
+            turban.scale.set(5.5, 5, 5.5);
             headBone.add(turban);
-            console.log("[v0] Turban added - position:", turban.position, "scale:", turban.scale);
           }
           
           progress.loaded().then(() => {
