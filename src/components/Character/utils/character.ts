@@ -42,7 +42,6 @@ const setCharacter = (
                 
                 if (isCapMesh) {
                   mesh.visible = false;
-                  console.log("[v0] Hidden cap mesh:", mesh.name);
                 }
 
                 // Change clothing colors to match site theme
