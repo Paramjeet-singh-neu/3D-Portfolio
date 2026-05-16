@@ -13,14 +13,16 @@ import {
 
 const textureLoader = new THREE.TextureLoader();
 const imageUrls = [
-  "/images/python2.webp",
-  "/images/azure2.webp",
-  "/images/langchain2.webp",
-  "/images/openai2.webp",
-  "/images/snowflake2.webp",
-  "/images/docker2.webp",
-  "/images/fastapi2.webp",
-  "/images/sql2.webp",
+  "/images/python.webp",
+  "/images/pytorch.webp",
+  "/images/tensorflow.webp",
+  "/images/openai.webp",
+  "/images/azure.webp",
+  "/images/docker.webp",
+  "/images/fastapi.webp",
+  "/images/langchain.webp",
+  "/images/huggingface.webp",
+  "/images/react.webp",
 ];
 const textures = imageUrls.map((url) => textureLoader.load(url));
 
@@ -130,20 +132,11 @@ const TechStack = () => {
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY || document.documentElement.scrollTop;
-      const workElement = document.querySelector("[id*='work']") || document.querySelector(".work-section") || document.querySelector("[class*='work']");
-      
-      if (!workElement) {
-        // If no work element found, activate after scrolling 1500px
-        console.log("[v0] TechStack: No work element found, using fallback scroll trigger");
-        setIsActive(scrollY > 1500);
-        return;
-      }
-      
-      const threshold = workElement.getBoundingClientRect().top + window.scrollY;
+      const threshold = document
+        .getElementById("work")!
+        .getBoundingClientRect().top;
       setIsActive(scrollY > threshold);
-      console.log("[v0] TechStack: Active =", scrollY > threshold, "scrollY =", scrollY, "threshold =", threshold);
     };
-    
     document.querySelectorAll(".header a").forEach((elem) => {
       const element = elem as HTMLAnchorElement;
       element.addEventListener("click", () => {
@@ -155,11 +148,7 @@ const TechStack = () => {
         }, 1000);
       });
     });
-    
     window.addEventListener("scroll", handleScroll);
-    // Initial check
-    setTimeout(handleScroll, 500);
-    
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
@@ -181,7 +170,7 @@ const TechStack = () => {
 
   return (
     <div className="techstack">
-      <h2> My Techstack</h2>
+      <h2> My Tech Stack</h2>
 
       <Canvas
         shadows

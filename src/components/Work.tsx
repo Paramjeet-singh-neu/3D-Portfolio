@@ -2,51 +2,7 @@ import { useState, useCallback } from "react";
 import "./styles/Work.css";
 import WorkImage from "./WorkImage";
 import { MdArrowBack, MdArrowForward } from "react-icons/md";
-
-const projects = [
-  {
-    title: "IMDb Analytics & Data Warehouse",
-    category: "End-to-end BI System",
-    tools: "Azure Data Factory, Databricks, Snowflake, dbt, Power BI, Medallion Architecture",
-    image: "/images/imdb-analytics.png",
-    link: "#",
-  },
-  {
-    title: "QuickQuiz",
-    category: "Agentic AI Quiz Platform",
-    tools: "Python, LangChain, OpenAI, Tool Calling, Error Recovery",
-    image: "/images/quickquiz.png",
-    link: "#",
-  },
-  {
-    title: "FinSight Lite",
-    category: "Vector RAG System",
-    tools: "ChromaDB, GPT-4o-mini, SEC EDGAR Filings, Semantic Search",
-    image: "/images/finsight.png",
-    link: "#",
-  },
-  {
-    title: "SpecHunt",
-    category: "Tech Product Comparison Tool",
-    tools: "React.js, Node.js, MongoDB, Real-time Analytics",
-    image: "/images/spechunt.png",
-    link: "#",
-  },
-  {
-    title: "Multilingual Enterprise Chatbot",
-    category: "AI Chatbot Platform",
-    tools: "Azure OpenAI, GPT-4, Python, RAG, Multilingual NLP, Azure Bot Service",
-    image: "/images/chatbot.png",
-    link: "#",
-  },
-  {
-    title: "OCR Document Pipeline",
-    category: "Azure Serverless Pipeline",
-    tools: "Azure Functions, Azure Form Recognizer, Python, Blob Storage, Cosmos DB",
-    image: "/images/ocr-pipeline.png",
-    link: "#",
-  },
-];
+import { projects, emphasizeMetrics } from "../data/portfolioContent";
 
 const Work = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -75,14 +31,13 @@ const Work = () => {
   }, [currentIndex, goToSlide]);
 
   return (
-    <div className="work-section" id="projects">
+    <div className="work-section" id="work">
       <div className="work-container section-container">
         <h2>
-          My <span>Projects</span>
+          My <span>Work</span>
         </h2>
 
         <div className="carousel-wrapper">
-          {/* Navigation Arrows */}
           <button
             className="carousel-arrow carousel-arrow-left"
             onClick={goToPrev}
@@ -100,7 +55,6 @@ const Work = () => {
             <MdArrowForward />
           </button>
 
-          {/* Slides */}
           <div className="carousel-track-container">
             <div
               className="carousel-track"
@@ -109,7 +63,10 @@ const Work = () => {
               }}
             >
               {projects.map((project, index) => (
-                <div className="carousel-slide" key={index}>
+                <div
+                  className={`carousel-slide${project.featured ? " carousel-slide-featured" : ""}`}
+                  key={project.title}
+                >
                   <div className="carousel-content">
                     <div className="carousel-info">
                       <div className="carousel-number">
@@ -117,12 +74,43 @@ const Work = () => {
                       </div>
                       <div className="carousel-details">
                         <h4>{project.title}</h4>
-                        <p className="carousel-category">
-                          {project.category}
-                        </p>
+                        <p className="carousel-date">{project.date}</p>
+                        {project.badge && (
+                          <p className="carousel-badge">{project.badge}</p>
+                        )}
+                        <p
+                          className="carousel-category"
+                          dangerouslySetInnerHTML={{
+                            __html: emphasizeMetrics(project.description),
+                          }}
+                        />
                         <div className="carousel-tools">
-                          <span className="tools-label">Tools & Features</span>
-                          <p>{project.tools}</p>
+                          <span className="tools-label">Details</span>
+                          <p
+                            dangerouslySetInnerHTML={{
+                              __html: emphasizeMetrics(project.details),
+                            }}
+                          />
+                        </div>
+                        <div className="carousel-tech">
+                          {project.tech.map((tag) => (
+                            <span key={tag} className="carousel-tech-tag">
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                        <div className="carousel-links">
+                          {project.links.map((link) => (
+                            <a
+                              key={link.label}
+                              href={link.url}
+                              target="_blank"
+                              rel="noreferrer"
+                              data-cursor="disable"
+                            >
+                              {link.label}
+                            </a>
+                          ))}
                         </div>
                       </div>
                     </div>
@@ -130,7 +118,7 @@ const Work = () => {
                       <WorkImage
                         image={project.image}
                         alt={project.title}
-                        link={project.link}
+                        link={project.links[0]?.url}
                       />
                     </div>
                   </div>
@@ -139,13 +127,13 @@ const Work = () => {
             </div>
           </div>
 
-          {/* Dot Indicators */}
           <div className="carousel-dots">
             {projects.map((_, index) => (
               <button
                 key={index}
-                className={`carousel-dot ${index === currentIndex ? "carousel-dot-active" : ""
-                  }`}
+                className={`carousel-dot ${
+                  index === currentIndex ? "carousel-dot-active" : ""
+                }`}
                 onClick={() => goToSlide(index)}
                 aria-label={`Go to project ${index + 1}`}
                 data-cursor="disable"

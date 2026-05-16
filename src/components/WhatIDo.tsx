@@ -87,19 +87,22 @@ const WhatIDo = () => {
             <div className="what-corner"></div>
 
             <div className="what-content-in">
-              <h3>LLM APPS &amp; AI SYSTEMS</h3>
-              <h4>Production-Ready AI Solutions</h4>
+              <h3>LLM &amp; AI SYSTEMS</h3>
+              <h4>Production RAG, Agents &amp; Scoring Pipelines</h4>
               <p>
-                Building production AI solutions including LLM applications, RAG systems, agentic AI, and autonomous agents. Expertise in prompt engineering, system design, and enterprise AI deployment.
+                Ship LLM classification, retrieval, and multi-agent systems
+                with eval frameworks, guardrails, and human-in-the-loop
+                validation — built for production traffic, not demos.
               </p>
-              <h5>Skillset & tools</h5>
+              <h5>Skills</h5>
               <div className="what-content-flex">
-                <div className="what-tags">LLMs &amp; Agents</div>
-                <div className="what-tags">RAG Systems</div>
-                <div className="what-tags">Prompt Engineering</div>
-                <div className="what-tags">Tool Calling</div>
-                <div className="what-tags">Azure OpenAI</div>
-                <div className="what-tags">Vector DBs</div>
+                <div className="what-tags">GPT-4 / 4o &amp; Azure OpenAI</div>
+                <div className="what-tags">LangChain</div>
+                <div className="what-tags">RAG &amp; FAISS</div>
+                <div className="what-tags">Agentic AI</div>
+                <div className="what-tags">Prompt engineering</div>
+                <div className="what-tags">TwelveLabs API</div>
+                <div className="what-tags">Model evaluation</div>
               </div>
               <div className="what-arrow"></div>
             </div>
@@ -123,19 +126,22 @@ const WhatIDo = () => {
             </div>
             <div className="what-corner"></div>
             <div className="what-content-in">
-              <h3>DATA ENGINEERING &amp; CLOUD</h3>
-              <h4>Enterprise Data Architecture</h4>
+              <h3>ML &amp; DATA ENGINEERING</h3>
+              <h4>Pipelines, Evaluation &amp; MLOps</h4>
               <p>
-                Architecting and building scalable data pipelines, ETL systems, and cloud infrastructure. Expertise in data warehousing, analytics, and AI-powered data solutions on Azure.
+                Build ETL and Medallion pipelines, embedding-based retrieval,
+                and serving layers with drift monitoring and statistical
+                validation — so models stay reliable in production.
               </p>
-              <h5>Skillset & tools</h5>
+              <h5>Skills</h5>
               <div className="what-content-flex">
-                <div className="what-tags">Python</div>
-                <div className="what-tags">SQL &amp; Databases</div>
-                <div className="what-tags">Azure Cloud</div>
-                <div className="what-tags">Data Pipelines</div>
-                <div className="what-tags">ETL &amp; Automation</div>
-                <div className="what-tags">BI &amp; Dashboards</div>
+                <div className="what-tags">Python &amp; SQL</div>
+                <div className="what-tags">PyTorch</div>
+                <div className="what-tags">Databricks &amp; PySpark</div>
+                <div className="what-tags">Snowflake</div>
+                <div className="what-tags">Azure &amp; Docker</div>
+                <div className="what-tags">Medallion Architecture</div>
+                <div className="what-tags">Drift monitoring</div>
               </div>
               <div className="what-arrow"></div>
             </div>

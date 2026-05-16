@@ -1,7 +1,6 @@
-import {
-  FaGithub,
-  FaLinkedinIn,
-} from "react-icons/fa6";
+import { FaGithub, FaLinkedinIn } from "react-icons/fa6";
+import { MdEmail } from "react-icons/md";
+import { HiGlobeAlt } from "react-icons/hi2";
 import "./styles/SocialIcons.css";
 import { TbNotes } from "react-icons/tb";
 import { useEffect } from "react";
@@ -59,7 +58,7 @@ const SocialIcons = () => {
       <div className="social-icons" data-cursor="icons" id="social">
         <span>
           <a
-            href="https://github.com/Paramjeet-singh-neu"
+            href="https://github.com/paramjeet5ingh"
             target="_blank"
             rel="noreferrer"
           >
@@ -75,10 +74,24 @@ const SocialIcons = () => {
             <FaLinkedinIn />
           </a>
         </span>
+        <span>
+          <a href="mailto:paramjeetsingh070@gmail.com">
+            <MdEmail />
+          </a>
+        </span>
+        <span>
+          <a
+            href="https://www.paramjeetsingh.me/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <HiGlobeAlt />
+          </a>
+        </span>
       </div>
       <a
         className="resume-button"
-        href="/Paramjeet_Singh_Resume.pdf"
+        href="/Paramjeet_Singh.pdf"
         target="_blank"
         rel="noreferrer"
       >

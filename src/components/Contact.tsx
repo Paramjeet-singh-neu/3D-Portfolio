@@ -8,7 +8,7 @@ const Contact = () => {
         <h3>Contact</h3>
         <div className="contact-flex">
           <div className="contact-box">
-            <h4>Email</h4>
+            <h4>Connect</h4>
             <p>
               <a
                 href="mailto:paramjeetsingh070@gmail.com"
@@ -17,26 +17,49 @@ const Contact = () => {
                 paramjeetsingh070@gmail.com
               </a>
             </p>
-            <h4>Phone</h4>
-            <p>303 475 6390</p>
-            <h4>Education</h4>
             <p>
-              MS in Information Systems, Northeastern University — Graduating May 2026
+              <a
+                href="https://www.linkedin.com/in/paramjeet5ingh/"
+                target="_blank"
+                rel="noreferrer"
+                data-cursor="disable"
+              >
+                LinkedIn — paramjeet5ingh
+              </a>
             </p>
             <p>
-              BE in Electronics and Communication, CMR University — 2021
+              <a
+                href="https://www.paramjeetsingh.me/"
+                target="_blank"
+                rel="noreferrer"
+                data-cursor="disable"
+              >
+                paramjeetsingh.me
+              </a>
+            </p>
+            <h4>Education</h4>
+            <p>
+              Northeastern University — MS, Information Systems · 2024–2026 ·
+              GPA 3.78
+            </p>
+            <p>
+              Coursework: Agentic AI, Business Intelligence Architecture, Data
+              Management, Application Engineering, Web Development, Data Science
+              Methods
+            </p>
+            <p>
+              CMR University — B.Tech, Electrical, Electronics &amp;
+              Communications · 2017–2021 · GPA 3.4
             </p>
           </div>
           <div className="contact-box">
             <h4>Social</h4>
             <a
-              href="https://github.com/Paramjeet-singh-neu"
-              target="_blank"
-              rel="noreferrer"
+              href="mailto:paramjeetsingh070@gmail.com"
               data-cursor="disable"
               className="contact-social"
             >
-              GitHub <MdArrowOutward />
+              Email <MdArrowOutward />
             </a>
             <a
               href="https://www.linkedin.com/in/paramjeet5ingh/"
@@ -47,10 +70,28 @@ const Contact = () => {
             >
               LinkedIn <MdArrowOutward />
             </a>
+            <a
+              href="https://github.com/paramjeet5ingh"
+              target="_blank"
+              rel="noreferrer"
+              data-cursor="disable"
+              className="contact-social"
+            >
+              GitHub <MdArrowOutward />
+            </a>
+            <a
+              href="https://www.paramjeetsingh.me/"
+              target="_blank"
+              rel="noreferrer"
+              data-cursor="disable"
+              className="contact-social"
+            >
+              Portfolio <MdArrowOutward />
+            </a>
           </div>
           <div className="contact-box">
             <h2>
-              Portfolio of <br /> <span>Paramjeet Singh</span>
+              Designed and Developed <br /> by <span>Paramjeet Singh</span>
             </h2>
             <h5>
               <MdCopyright /> 2026
