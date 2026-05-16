@@ -37,20 +37,6 @@ const Contact = () => {
                 paramjeetsingh.me
               </a>
             </p>
-            <h4>Education</h4>
-            <p>
-              Northeastern University — MS, Information Systems · 2024–2026 ·
-              GPA 3.78
-            </p>
-            <p>
-              Coursework: Agentic AI, Business Intelligence Architecture, Data
-              Management, Application Engineering, Web Development, Data Science
-              Methods
-            </p>
-            <p>
-              CMR University — B.Tech, Electrical, Electronics &amp;
-              Communications · 2017–2021 · GPA 3.4
-            </p>
           </div>
           <div className="contact-box">
             <h4>Social</h4>

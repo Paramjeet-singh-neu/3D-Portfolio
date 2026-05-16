@@ -105,7 +105,7 @@ const Work = () => {
                               key={link.label}
                               href={link.url}
                               target="_blank"
-                              rel="noreferrer"
+                              rel="noopener noreferrer"
                               data-cursor="disable"
                             >
                               {link.label}

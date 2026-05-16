@@ -33,7 +33,15 @@ export type SkillCategory = {
 
 export type Award = {
   title: string;
+  date?: string;
+  subtitle?: string;
   detail: string;
+  link?: string;
+};
+
+export type AwardGroup = {
+  label: string;
+  items: Award[];
 };
 
 export const experience: CareerEntry[] = [
@@ -93,7 +101,7 @@ export const projects: Project[] = [
     links: [
       { label: "GitHub", url: "https://github.com/Paramjeet-singh-neu/CoachMe" },
     ],
-    image: "/images/placeholder.webp",
+    image: "/images/projects/coachme.png",
   },
   {
     title: "ConNET",
@@ -108,7 +116,7 @@ export const projects: Project[] = [
     links: [
       { label: "GitHub", url: "https://github.com/Paramjeet-singh-neu/ConNET" },
     ],
-    image: "/images/placeholder.webp",
+    image: "/images/projects/connet.png",
   },
   {
     title: "FinSight",
@@ -124,7 +132,7 @@ export const projects: Project[] = [
         url: "https://github.com/Paramjeet-singh-neu",
       },
     ],
-    image: "/images/placeholder.webp",
+    image: "/images/finsight.png",
   },
   {
     title: "LockIn.AI",
@@ -138,10 +146,10 @@ export const projects: Project[] = [
     links: [
       {
         label: "GitHub",
-        url: "https://github.com/Paramjeet-singh-neu",
+        url: "https://github.com/Paramjeet-singh-neu/GenerationalHackers",
       },
     ],
-    image: "/images/placeholder.webp",
+    image: "/images/projects/lockin.png",
   },
   {
     title: "Text Encoding & Decoding Pipeline",
@@ -154,10 +162,10 @@ export const projects: Project[] = [
     links: [
       {
         label: "GitHub",
-        url: "https://github.com/Paramjeet-singh-neu",
+        url: "https://github.com/Paramjeet-singh-neu/text-encoder-decoder-JAVA-",
       },
     ],
-    image: "/images/placeholder.webp",
+    image: "/images/projects/text-encoding.png",
   },
   {
     title: "IMDb Analytics & End-to-End BI Platform",
@@ -179,10 +187,10 @@ export const projects: Project[] = [
     links: [
       {
         label: "GitHub",
-        url: "https://github.com/Paramjeet-singh-neu",
+        url: "https://github.com/Paramjeet-singh-neu/IMBD",
       },
     ],
-    image: "/images/placeholder.webp",
+    image: "/images/imdb-analytics.png",
   },
   {
     title: "LA Crime Analysis — End-to-End BI Platform",
@@ -202,11 +210,11 @@ export const projects: Project[] = [
     ],
     links: [
       {
-        label: "GitHub",
-        url: "https://github.com/Paramjeet-singh-neu",
+        label: "View on GitHub",
+        url: "https://github.com/prathushp/End-to-End-LA-Crime-Analytics_Group4",
       },
     ],
-    image: "/images/placeholder.webp",
+    image: "/images/projects/la-crime.png",
   },
   {
     title: "Food Establishment Inspections — Chicago & Dallas",
@@ -219,10 +227,10 @@ export const projects: Project[] = [
     links: [
       {
         label: "GitHub",
-        url: "https://github.com/Paramjeet-singh-neu",
+        url: "https://github.com/Paramjeet-singh-neu/Food-Inspections-DW-Project/tree/Param",
       },
     ],
-    image: "/images/placeholder.webp",
+    image: "/images/projects/food-inspections.png",
   },
   {
     title: "QuickQuiz",
@@ -238,7 +246,7 @@ export const projects: Project[] = [
         url: "https://github.com/Paramjeet-singh-neu/QuickQuiz",
       },
     ],
-    image: "/images/placeholder.webp",
+    image: "/images/quickquiz.png",
   },
   {
     title: "Food Delivery System",
@@ -251,10 +259,10 @@ export const projects: Project[] = [
     links: [
       {
         label: "GitHub",
-        url: "https://github.com/Paramjeet-singh-neu",
+        url: "https://github.com/Paramjeet-singh-neu/food-delivery-database-system",
       },
     ],
-    image: "/images/placeholder.webp",
+    image: "/images/projects/food-delivery.png",
   },
   {
     title: "SpecHunt",
@@ -269,7 +277,7 @@ export const projects: Project[] = [
         url: "https://github.com/Paramjeet-singh-neu",
       },
     ],
-    image: "/images/placeholder.webp",
+    image: "/images/spechunt.png",
   },
   {
     title: "Blood Bank Management Application",
@@ -281,11 +289,11 @@ export const projects: Project[] = [
     tech: ["Java", "NetBeans", "SQL", "DBMS"],
     links: [
       {
-        label: "GitHub",
-        url: "https://github.com/paramjeet5ingh",
+        label: "View on GitHub",
+        url: "https://github.com/raghavendraprasath/blood-bank-management-system",
       },
     ],
-    image: "/images/placeholder.webp",
+    image: "/images/projects/blood-bank.png",
   },
   {
     title: "AI Chatbot with Web Data Integration",
@@ -308,7 +316,7 @@ export const projects: Project[] = [
         url: "https://github.com/paramjeet5ingh",
       },
     ],
-    image: "/images/placeholder.webp",
+    image: "/images/chatbot.png",
   },
 ];
 
@@ -385,38 +393,38 @@ export const skillCategories: SkillCategory[] = [
   },
 ];
 
-export const awards: Award[] = [
+export const awardGroups: AwardGroup[] = [
   {
-    title: "🏆 Grand Prize — Voxel51 × TwelveLabs Video Understanding AI Hackathon",
-    detail:
-      "Won with CoachMe+. Presented at TwelveLabs webinar; recognized at Northeastern MGEN Awards.",
+    label: "Hackathon Wins",
+    items: [
+      {
+        title:
+          "🏆 Grand Prize — Voxel51 × TwelveLabs Video Understanding AI Hackathon",
+        date: "Apr 2026",
+        detail:
+          "Won with CoachMe+. Presented at TwelveLabs webinar.",
+      },
+    ],
   },
   {
-    title: "🏆 MGEN Award — Program Director Award",
-    detail: "Northeastern University recognition for CoachMe+.",
-  },
-  {
-    title: "Google AI Professional Certificate",
-    detail: "2026",
+    label: "Recognition",
+    items: [
+      {
+        title: "🏅 MGEN Award — Program Director Award",
+        subtitle:
+          "Northeastern University College of Engineering · 2026",
+        detail:
+          "Recognized across the College of Engineering's graduate programs for sustained contribution throughout the MS program.",
+      },
+      {
+        title: "Cursor Boston — Open Source Contributor",
+        date: "May 2026",
+        detail:
+          "Recognized for community participation and open source contributions.",
+      },
+    ],
   },
 ];
-
-export const education = {
-  ms: {
-    school: "Northeastern University",
-    degree: "MS, Information Systems",
-    years: "2024–2026",
-    gpa: "3.78",
-    coursework:
-      "Agentic AI, Business Intelligence Architecture, Data Management, Application Engineering, Web Development, Data Science Methods",
-  },
-  bs: {
-    school: "CMR University",
-    degree: "B.Tech, Electrical, Electronics & Communications",
-    years: "2017–2021",
-    gpa: "3.4",
-  },
-};
 
 /** Wraps numbers and % metrics in markup for accent styling */
 export function emphasizeMetrics(text: string): string {

@@ -2,6 +2,7 @@ import * as THREE from "three";
 import { DRACOLoader, GLTF, GLTFLoader } from "three-stdlib";
 import { setCharTimeline, setAllTimeline } from "../../utils/GsapScroll";
 import { decryptFile } from "./decrypt";
+import { customizeCharacterMeshes } from "./avatarMaterials";
 
 const setCharacter = (
   renderer: THREE.WebGLRenderer,
@@ -28,40 +29,7 @@ const setCharacter = (
           async (gltf) => {
             character = gltf.scene;
             await renderer.compileAsync(character, camera, scene);
-            // Collect all mesh names for debugging
-            const meshNames: string[] = [];
-            
-            character.traverse((child: any) => {
-              if (child.isMesh) {
-                const mesh = child as THREE.Mesh;
-                meshNames.push(mesh.name);
-
-                // Hide the cap/hat mesh - check various possible names
-                const capNames = ["cap", "hat", "Cap", "Hat", "CAP", "HAT", "headwear", "Headwear", "baseball", "Baseball"];
-                const isCapMesh = capNames.some(name => mesh.name.toLowerCase().includes(name.toLowerCase()));
-                
-                if (isCapMesh) {
-                  mesh.visible = false;
-                }
-
-                // Change clothing colors to match site theme
-                if (mesh.material) {
-                  if (mesh.name === "BODY.SHIRT") { // The shirt mesh
-                    const newMat = (mesh.material as THREE.Material).clone() as THREE.MeshStandardMaterial;
-                    newMat.color = new THREE.Color("#8B4513");
-                    mesh.material = newMat;
-                  } else if (mesh.name === "Pant") {
-                    const newMat = (mesh.material as THREE.Material).clone() as THREE.MeshStandardMaterial;
-                    newMat.color = new THREE.Color("#000000");
-                    mesh.material = newMat;
-                  }
-                }
-
-                child.castShadow = true;
-                child.receiveShadow = true;
-                mesh.frustumCulled = true;
-              }
-            });
+            customizeCharacterMeshes(character);
             
             resolve(gltf);
             setCharTimeline(character, camera);
